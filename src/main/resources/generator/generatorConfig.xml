@@ -135,7 +135,9 @@
                              targetPackage="${base.java.package}.t_cont_mst"
                              targetProject="${java.targetProject}"/>
 
-        <table tableName="t_cont_mst" domainObjectName="TContMst"/>
+        <table tableName="t_cont_mst" domainObjectName="TContMst">
+            <generatedKey column="CONT_NO" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 
     <context id="TContMstHistContext" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -487,7 +489,9 @@
                              targetPackage="${base.java.package}.t_isu_target"
                              targetProject="${java.targetProject}"/>
 
-        <table tableName="t_isu_target" domainObjectName="TIsuTarget"/>
+        <table tableName="t_isu_target" domainObjectName="TIsuTarget">
+            <generatedKey column="ISU_TARGET_SNO" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 
     <context id="TMemberMstContext" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -531,7 +535,9 @@
                              targetPackage="${base.java.package}.t_member_mst"
                              targetProject="${java.targetProject}"/>
 
-        <table tableName="t_member_mst" domainObjectName="TMemberMst"/>
+        <table tableName="t_member_mst" domainObjectName="TMemberMst">
+            <generatedKey column="MEMBER_NO" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 
     <context id="TMemberPidContext" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -575,7 +581,9 @@
                              targetPackage="${base.java.package}.t_member_pid"
                              targetProject="${java.targetProject}"/>
 
-        <table tableName="t_member_pid" domainObjectName="TMemberPid"/>
+        <table tableName="t_member_pid" domainObjectName="TMemberPid">
+            <generatedKey column="PID_NO" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 
     <context id="TMemberPtMstContext" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -619,7 +627,9 @@
                              targetPackage="${base.java.package}.t_member_pt_mst"
                              targetProject="${java.targetProject}"/>
 
-        <table tableName="t_member_pt_mst" domainObjectName="TMemberPtMst"/>
+        <table tableName="t_member_pt_mst" domainObjectName="TMemberPtMst">
+            <generatedKey column="MEMBER_PT_NO" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 
     <context id="TOrgMstContext" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -663,7 +673,9 @@
                              targetPackage="${base.java.package}.t_org_mst"
                              targetProject="${java.targetProject}"/>
 
-        <table tableName="t_org_mst" domainObjectName="TOrgMst"/>
+        <table tableName="t_org_mst" domainObjectName="TOrgMst">
+            <generatedKey column="ORG_NO" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 
     <context id="TPtMstContext" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -707,7 +719,9 @@
                              targetPackage="${base.java.package}.t_pt_mst"
                              targetProject="${java.targetProject}"/>
 
-        <table tableName="t_pt_mst" domainObjectName="TPtMst"/>
+        <table tableName="t_pt_mst" domainObjectName="TPtMst">
+            <generatedKey column="PT_NO" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 
     <context id="TSubContMstContext" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -839,7 +853,9 @@
                              targetPackage="${base.java.package}.t_tr_hist"
                              targetProject="${java.targetProject}"/>
 
-        <table tableName="t_tr_hist" domainObjectName="TTrHist"/>
+        <table tableName="t_tr_hist" domainObjectName="TTrHist">
+            <generatedKey column="TR_SNO" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 
     <context id="TTrHistDetailContext" targetRuntime="MyBatis3" defaultModelType="flat">

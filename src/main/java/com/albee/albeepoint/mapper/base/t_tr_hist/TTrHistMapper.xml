@@ -113,26 +113,23 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.albee.albeepoint.mapper.base.t_tr_hist.TTrHist">
-    insert into t_tr_hist (TR_SNO, MEMBER_NO, TR_DT, 
-      TR_GB_CD, TR_METHOD_GB_CD, TR_DY, 
-      ORG_NO, BRCH_NO, TR_PT, BEF_PT, 
-      AFR_PT, PURCHASE_AMT, ORGL_TR_SNO, 
-      REG_USER_ID, REG_DT, LAST_MOD_USER_ID, 
-      LAST_MOD_DT)
-    values (#{trSno,jdbcType=BIGINT}, #{memberNo,jdbcType=BIGINT}, #{trDt,jdbcType=TIMESTAMP}, 
-      #{trGbCd,jdbcType=VARCHAR}, #{trMethodGbCd,jdbcType=VARCHAR}, #{trDy,jdbcType=VARCHAR}, 
-      #{orgNo,jdbcType=BIGINT}, #{brchNo,jdbcType=BIGINT}, #{trPt,jdbcType=BIGINT}, #{befPt,jdbcType=BIGINT}, 
-      #{afrPt,jdbcType=BIGINT}, #{purchaseAmt,jdbcType=BIGINT}, #{orglTrSno,jdbcType=BIGINT}, 
-      #{regUserId,jdbcType=VARCHAR}, #{regDt,jdbcType=TIMESTAMP}, #{lastModUserId,jdbcType=VARCHAR}, 
-      #{lastModDt,jdbcType=TIMESTAMP})
+  <insert id="insert" keyColumn="TR_SNO" keyProperty="trSno" parameterType="com.albee.albeepoint.mapper.base.t_tr_hist.TTrHist" useGeneratedKeys="true">
+    insert into t_tr_hist (MEMBER_NO, TR_DT, TR_GB_CD, 
+      TR_METHOD_GB_CD, TR_DY, ORG_NO, 
+      BRCH_NO, TR_PT, BEF_PT, AFR_PT, 
+      PURCHASE_AMT, ORGL_TR_SNO, REG_USER_ID, 
+      REG_DT, LAST_MOD_USER_ID, LAST_MOD_DT
+      )
+    values (#{memberNo,jdbcType=BIGINT}, #{trDt,jdbcType=TIMESTAMP}, #{trGbCd,jdbcType=VARCHAR}, 
+      #{trMethodGbCd,jdbcType=VARCHAR}, #{trDy,jdbcType=VARCHAR}, #{orgNo,jdbcType=BIGINT}, 
+      #{brchNo,jdbcType=BIGINT}, #{trPt,jdbcType=BIGINT}, #{befPt,jdbcType=BIGINT}, #{afrPt,jdbcType=BIGINT}, 
+      #{purchaseAmt,jdbcType=BIGINT}, #{orglTrSno,jdbcType=BIGINT}, #{regUserId,jdbcType=VARCHAR}, 
+      #{regDt,jdbcType=TIMESTAMP}, #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.albee.albeepoint.mapper.base.t_tr_hist.TTrHist">
+  <insert id="insertSelective" keyColumn="TR_SNO" keyProperty="trSno" parameterType="com.albee.albeepoint.mapper.base.t_tr_hist.TTrHist" useGeneratedKeys="true">
     insert into t_tr_hist
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="trSno != null">
-        TR_SNO,
-      </if>
       <if test="memberNo != null">
         MEMBER_NO,
       </if>
@@ -183,9 +180,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="trSno != null">
-        #{trSno,jdbcType=BIGINT},
-      </if>
       <if test="memberNo != null">
         #{memberNo,jdbcType=BIGINT},
       </if>

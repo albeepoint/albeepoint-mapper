@@ -109,24 +109,21 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.albee.albeepoint.mapper.base.t_org_mst.TOrgMst">
-    insert into t_org_mst (ORG_NO, ORG_NM, ORG_CD, 
-      ORG_DISP_NM, SAVE_CAN_YN, USE_CAN_YN, 
-      MEMBER_AUTO_REG_YN, ORG_STS_CD, JOIN_DT, 
-      LEAVE_DT, REG_USER_ID, REG_DT, 
-      LAST_MOD_USER_ID, LAST_MOD_DT)
-    values (#{orgNo,jdbcType=BIGINT}, #{orgNm,jdbcType=VARCHAR}, #{orgCd,jdbcType=VARCHAR}, 
-      #{orgDispNm,jdbcType=VARCHAR}, #{saveCanYn,jdbcType=VARCHAR}, #{useCanYn,jdbcType=VARCHAR}, 
-      #{memberAutoRegYn,jdbcType=VARCHAR}, #{orgStsCd,jdbcType=VARCHAR}, #{joinDt,jdbcType=TIMESTAMP}, 
-      #{leaveDt,jdbcType=TIMESTAMP}, #{regUserId,jdbcType=VARCHAR}, #{regDt,jdbcType=TIMESTAMP}, 
-      #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP})
+  <insert id="insert" keyColumn="ORG_NO" keyProperty="orgNo" parameterType="com.albee.albeepoint.mapper.base.t_org_mst.TOrgMst" useGeneratedKeys="true">
+    insert into t_org_mst (ORG_NM, ORG_CD, ORG_DISP_NM, 
+      SAVE_CAN_YN, USE_CAN_YN, MEMBER_AUTO_REG_YN, 
+      ORG_STS_CD, JOIN_DT, LEAVE_DT, 
+      REG_USER_ID, REG_DT, LAST_MOD_USER_ID, 
+      LAST_MOD_DT)
+    values (#{orgNm,jdbcType=VARCHAR}, #{orgCd,jdbcType=VARCHAR}, #{orgDispNm,jdbcType=VARCHAR}, 
+      #{saveCanYn,jdbcType=VARCHAR}, #{useCanYn,jdbcType=VARCHAR}, #{memberAutoRegYn,jdbcType=VARCHAR}, 
+      #{orgStsCd,jdbcType=VARCHAR}, #{joinDt,jdbcType=TIMESTAMP}, #{leaveDt,jdbcType=TIMESTAMP}, 
+      #{regUserId,jdbcType=VARCHAR}, #{regDt,jdbcType=TIMESTAMP}, #{lastModUserId,jdbcType=VARCHAR}, 
+      #{lastModDt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.albee.albeepoint.mapper.base.t_org_mst.TOrgMst">
+  <insert id="insertSelective" keyColumn="ORG_NO" keyProperty="orgNo" parameterType="com.albee.albeepoint.mapper.base.t_org_mst.TOrgMst" useGeneratedKeys="true">
     insert into t_org_mst
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orgNo != null">
-        ORG_NO,
-      </if>
       <if test="orgNm != null">
         ORG_NM,
       </if>
@@ -168,9 +165,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orgNo != null">
-        #{orgNo,jdbcType=BIGINT},
-      </if>
       <if test="orgNm != null">
         #{orgNm,jdbcType=VARCHAR},
       </if>

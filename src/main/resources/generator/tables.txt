@@ -3,7 +3,7 @@
 
 t_brch_mst
 t_cont_brch
-t_cont_mst
+t_cont_mst|CONT_NO
 t_cont_mst_hist
 t_cont_org
 t_cont_record
@@ -11,15 +11,15 @@ t_cont_rel
 t_cont_stat
 t_enc_info
 t_ip_filter
-t_isu_target
-t_member_mst
-t_member_pid
-t_member_pt_mst
-t_org_mst
-t_pt_mst
+t_isu_target|ISU_TARGET_SNO
+t_member_mst|MEMBER_NO
+t_member_pid|PID_NO
+t_member_pt_mst|MEMBER_PT_NO
+t_org_mst|ORG_NO
+t_pt_mst|PT_NO
 t_sub_cont_mst
 t_sub_cont_mst_hist
-t_tr_hist
+t_tr_hist|TR_SNO
 t_tr_hist_detail
 t_tr_hist_exp
 t_tr_log

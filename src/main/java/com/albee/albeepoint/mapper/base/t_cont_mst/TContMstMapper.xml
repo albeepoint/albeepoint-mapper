@@ -141,11 +141,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.albee.albeepoint.mapper.base.t_cont_mst.TContMst">
-    insert into t_cont_mst (CONT_NO, CONT_NM, PT_TYPE_CD, 
-      START_DT, END_DT, ISU_START_DT, 
-      ISU_END_DT, USE_START_DT, USE_END_DT, 
-      CONT_REG_DT, USE_START_DT_CALC_TYPE_CD, USE_START_DT_CALC_VAL, 
+  <insert id="insert" keyColumn="CONT_NO" keyProperty="contNo" parameterType="com.albee.albeepoint.mapper.base.t_cont_mst.TContMst" useGeneratedKeys="true">
+    insert into t_cont_mst (CONT_NM, PT_TYPE_CD, START_DT, 
+      END_DT, ISU_START_DT, ISU_END_DT, 
+      USE_START_DT, USE_END_DT, CONT_REG_DT, 
+      USE_START_DT_CALC_TYPE_CD, USE_START_DT_CALC_VAL, 
       USE_PERIOD_CALC_TYPE_CD, USE_PERIOD_CALC_VAL, 
       CONT_STS_CD, MIX_USE_YN, ISU_PERIOD_LIMIT_TYPE_CD, 
       ISU_PERIOD_MAX_PT, ISU_PERIOD_MAX_CNT, ONCE_ISU_LIMIT_TYPE_CD, 
@@ -156,10 +156,10 @@
       TOTAL_ISU_LIMIT_TYPE_CD, TOTAL_ISU_ABLE_PT, TOTAL_ISU_ABLE_CNT, 
       MIN_PURCHASE_AMT, REG_USER_ID, REG_DT, 
       LAST_MOD_USER_ID, LAST_MOD_DT)
-    values (#{contNo,jdbcType=BIGINT}, #{contNm,jdbcType=VARCHAR}, #{ptTypeCd,jdbcType=VARCHAR}, 
-      #{startDt,jdbcType=TIMESTAMP}, #{endDt,jdbcType=TIMESTAMP}, #{isuStartDt,jdbcType=TIMESTAMP}, 
-      #{isuEndDt,jdbcType=TIMESTAMP}, #{useStartDt,jdbcType=TIMESTAMP}, #{useEndDt,jdbcType=TIMESTAMP}, 
-      #{contRegDt,jdbcType=TIMESTAMP}, #{useStartDtCalcTypeCd,jdbcType=VARCHAR}, #{useStartDtCalcVal,jdbcType=INTEGER}, 
+    values (#{contNm,jdbcType=VARCHAR}, #{ptTypeCd,jdbcType=VARCHAR}, #{startDt,jdbcType=TIMESTAMP}, 
+      #{endDt,jdbcType=TIMESTAMP}, #{isuStartDt,jdbcType=TIMESTAMP}, #{isuEndDt,jdbcType=TIMESTAMP}, 
+      #{useStartDt,jdbcType=TIMESTAMP}, #{useEndDt,jdbcType=TIMESTAMP}, #{contRegDt,jdbcType=TIMESTAMP}, 
+      #{useStartDtCalcTypeCd,jdbcType=VARCHAR}, #{useStartDtCalcVal,jdbcType=INTEGER}, 
       #{usePeriodCalcTypeCd,jdbcType=VARCHAR}, #{usePeriodCalcVal,jdbcType=INTEGER}, 
       #{contStsCd,jdbcType=VARCHAR}, #{mixUseYn,jdbcType=VARCHAR}, #{isuPeriodLimitTypeCd,jdbcType=VARCHAR}, 
       #{isuPeriodMaxPt,jdbcType=BIGINT}, #{isuPeriodMaxCnt,jdbcType=INTEGER}, #{onceIsuLimitTypeCd,jdbcType=VARCHAR}, 
@@ -171,12 +171,9 @@
       #{minPurchaseAmt,jdbcType=BIGINT}, #{regUserId,jdbcType=VARCHAR}, #{regDt,jdbcType=TIMESTAMP}, 
       #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.albee.albeepoint.mapper.base.t_cont_mst.TContMst">
+  <insert id="insertSelective" keyColumn="CONT_NO" keyProperty="contNo" parameterType="com.albee.albeepoint.mapper.base.t_cont_mst.TContMst" useGeneratedKeys="true">
     insert into t_cont_mst
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="contNo != null">
-        CONT_NO,
-      </if>
       <if test="contNm != null">
         CONT_NM,
       </if>
@@ -296,9 +293,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="contNo != null">
-        #{contNo,jdbcType=BIGINT},
-      </if>
       <if test="contNm != null">
         #{contNm,jdbcType=VARCHAR},
       </if>

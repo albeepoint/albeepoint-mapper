@@ -107,24 +107,19 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.albee.albeepoint.mapper.base.t_member_mst.TMemberMst">
-    insert into t_member_mst (MEMBER_NO, ORG_NO, MEMBER_ID_ENC, 
-      MEMBER_NM, MEMBER_STS_CD, JOIN_DT, 
-      LEAVE_DT, LAST_CONTACT_DT, REG_USER_ID, 
-      REG_DT, LAST_MOD_USER_ID, LAST_MOD_DT
-      )
-    values (#{memberNo,jdbcType=BIGINT}, #{orgNo,jdbcType=BIGINT}, #{memberIdEnc,jdbcType=VARCHAR}, 
-      #{memberNm,jdbcType=VARCHAR}, #{memberStsCd,jdbcType=VARCHAR}, #{joinDt,jdbcType=TIMESTAMP}, 
-      #{leaveDt,jdbcType=TIMESTAMP}, #{lastContactDt,jdbcType=TIMESTAMP}, #{regUserId,jdbcType=VARCHAR}, 
-      #{regDt,jdbcType=TIMESTAMP}, #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP}
-      )
+  <insert id="insert" keyColumn="MEMBER_NO" keyProperty="memberNo" parameterType="com.albee.albeepoint.mapper.base.t_member_mst.TMemberMst" useGeneratedKeys="true">
+    insert into t_member_mst (ORG_NO, MEMBER_ID_ENC, MEMBER_NM, 
+      MEMBER_STS_CD, JOIN_DT, LEAVE_DT, 
+      LAST_CONTACT_DT, REG_USER_ID, REG_DT, 
+      LAST_MOD_USER_ID, LAST_MOD_DT)
+    values (#{orgNo,jdbcType=BIGINT}, #{memberIdEnc,jdbcType=VARCHAR}, #{memberNm,jdbcType=VARCHAR}, 
+      #{memberStsCd,jdbcType=VARCHAR}, #{joinDt,jdbcType=TIMESTAMP}, #{leaveDt,jdbcType=TIMESTAMP}, 
+      #{lastContactDt,jdbcType=TIMESTAMP}, #{regUserId,jdbcType=VARCHAR}, #{regDt,jdbcType=TIMESTAMP}, 
+      #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.albee.albeepoint.mapper.base.t_member_mst.TMemberMst">
+  <insert id="insertSelective" keyColumn="MEMBER_NO" keyProperty="memberNo" parameterType="com.albee.albeepoint.mapper.base.t_member_mst.TMemberMst" useGeneratedKeys="true">
     insert into t_member_mst
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="memberNo != null">
-        MEMBER_NO,
-      </if>
       <if test="orgNo != null">
         ORG_NO,
       </if>
@@ -160,9 +155,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="memberNo != null">
-        #{memberNo,jdbcType=BIGINT},
-      </if>
       <if test="orgNo != null">
         #{orgNo,jdbcType=BIGINT},
       </if>

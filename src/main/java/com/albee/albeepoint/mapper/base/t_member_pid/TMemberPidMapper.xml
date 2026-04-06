@@ -106,22 +106,19 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.albee.albeepoint.mapper.base.t_member_pid.TMemberPid">
-    insert into t_member_pid (PID_NO, MEMBER_NO, ORG_NO, 
-      PID_ENC, PID_STS_CD, JOIN_DT, 
-      STOP_DT, REG_USER_ID, REG_DT, 
-      LAST_MOD_USER_ID, LAST_MOD_DT)
-    values (#{pidNo,jdbcType=BIGINT}, #{memberNo,jdbcType=BIGINT}, #{orgNo,jdbcType=BIGINT}, 
-      #{pidEnc,jdbcType=VARCHAR}, #{pidStsCd,jdbcType=VARCHAR}, #{joinDt,jdbcType=TIMESTAMP}, 
-      #{stopDt,jdbcType=TIMESTAMP}, #{regUserId,jdbcType=VARCHAR}, #{regDt,jdbcType=TIMESTAMP}, 
-      #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP})
+  <insert id="insert" keyColumn="PID_NO" keyProperty="pidNo" parameterType="com.albee.albeepoint.mapper.base.t_member_pid.TMemberPid" useGeneratedKeys="true">
+    insert into t_member_pid (MEMBER_NO, ORG_NO, PID_ENC, 
+      PID_STS_CD, JOIN_DT, STOP_DT, 
+      REG_USER_ID, REG_DT, LAST_MOD_USER_ID, 
+      LAST_MOD_DT)
+    values (#{memberNo,jdbcType=BIGINT}, #{orgNo,jdbcType=BIGINT}, #{pidEnc,jdbcType=VARCHAR}, 
+      #{pidStsCd,jdbcType=VARCHAR}, #{joinDt,jdbcType=TIMESTAMP}, #{stopDt,jdbcType=TIMESTAMP}, 
+      #{regUserId,jdbcType=VARCHAR}, #{regDt,jdbcType=TIMESTAMP}, #{lastModUserId,jdbcType=VARCHAR}, 
+      #{lastModDt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.albee.albeepoint.mapper.base.t_member_pid.TMemberPid">
+  <insert id="insertSelective" keyColumn="PID_NO" keyProperty="pidNo" parameterType="com.albee.albeepoint.mapper.base.t_member_pid.TMemberPid" useGeneratedKeys="true">
     insert into t_member_pid
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pidNo != null">
-        PID_NO,
-      </if>
       <if test="memberNo != null">
         MEMBER_NO,
       </if>
@@ -154,9 +151,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pidNo != null">
-        #{pidNo,jdbcType=BIGINT},
-      </if>
       <if test="memberNo != null">
         #{memberNo,jdbcType=BIGINT},
       </if>

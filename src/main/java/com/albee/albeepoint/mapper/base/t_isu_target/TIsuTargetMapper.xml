@@ -114,28 +114,23 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.albee.albeepoint.mapper.base.t_isu_target.TIsuTarget">
-    insert into t_isu_target (ISU_TARGET_SNO, CONT_NO, MEMBER_ID_ENC, 
-      MEMBER_NO, ISU_TARGET_TYPE_CD, ISU_REQ_DY, 
-      ISU_REQ_PT, USE_YN, ORG_CD, 
-      BRCH_CD, ISU_PT, ISU_DT, 
-      RESULT_CD, RESULT_MSG, REG_USER_ID, 
-      REG_DT, LAST_MOD_USER_ID, LAST_MOD_DT
-      )
-    values (#{isuTargetSno,jdbcType=BIGINT}, #{contNo,jdbcType=BIGINT}, #{memberIdEnc,jdbcType=VARCHAR}, 
-      #{memberNo,jdbcType=BIGINT}, #{isuTargetTypeCd,jdbcType=VARCHAR}, #{isuReqDy,jdbcType=VARCHAR}, 
-      #{isuReqPt,jdbcType=BIGINT}, #{useYn,jdbcType=VARCHAR}, #{orgCd,jdbcType=VARCHAR}, 
-      #{brchCd,jdbcType=VARCHAR}, #{isuPt,jdbcType=BIGINT}, #{isuDt,jdbcType=TIMESTAMP}, 
-      #{resultCd,jdbcType=VARCHAR}, #{resultMsg,jdbcType=VARCHAR}, #{regUserId,jdbcType=VARCHAR}, 
-      #{regDt,jdbcType=TIMESTAMP}, #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP}
-      )
+  <insert id="insert" keyColumn="ISU_TARGET_SNO" keyProperty="isuTargetSno" parameterType="com.albee.albeepoint.mapper.base.t_isu_target.TIsuTarget" useGeneratedKeys="true">
+    insert into t_isu_target (CONT_NO, MEMBER_ID_ENC, MEMBER_NO, 
+      ISU_TARGET_TYPE_CD, ISU_REQ_DY, ISU_REQ_PT, 
+      USE_YN, ORG_CD, BRCH_CD, 
+      ISU_PT, ISU_DT, RESULT_CD, 
+      RESULT_MSG, REG_USER_ID, REG_DT, 
+      LAST_MOD_USER_ID, LAST_MOD_DT)
+    values (#{contNo,jdbcType=BIGINT}, #{memberIdEnc,jdbcType=VARCHAR}, #{memberNo,jdbcType=BIGINT}, 
+      #{isuTargetTypeCd,jdbcType=VARCHAR}, #{isuReqDy,jdbcType=VARCHAR}, #{isuReqPt,jdbcType=BIGINT}, 
+      #{useYn,jdbcType=VARCHAR}, #{orgCd,jdbcType=VARCHAR}, #{brchCd,jdbcType=VARCHAR}, 
+      #{isuPt,jdbcType=BIGINT}, #{isuDt,jdbcType=TIMESTAMP}, #{resultCd,jdbcType=VARCHAR}, 
+      #{resultMsg,jdbcType=VARCHAR}, #{regUserId,jdbcType=VARCHAR}, #{regDt,jdbcType=TIMESTAMP}, 
+      #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.albee.albeepoint.mapper.base.t_isu_target.TIsuTarget">
+  <insert id="insertSelective" keyColumn="ISU_TARGET_SNO" keyProperty="isuTargetSno" parameterType="com.albee.albeepoint.mapper.base.t_isu_target.TIsuTarget" useGeneratedKeys="true">
     insert into t_isu_target
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="isuTargetSno != null">
-        ISU_TARGET_SNO,
-      </if>
       <if test="contNo != null">
         CONT_NO,
       </if>
@@ -189,9 +184,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="isuTargetSno != null">
-        #{isuTargetSno,jdbcType=BIGINT},
-      </if>
       <if test="contNo != null">
         #{contNo,jdbcType=BIGINT},
       </if>

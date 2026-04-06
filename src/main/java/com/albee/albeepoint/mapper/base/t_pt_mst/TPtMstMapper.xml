@@ -117,30 +117,25 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.albee.albeepoint.mapper.base.t_pt_mst.TPtMst">
-    insert into t_pt_mst (PT_NO, MEMBER_PT_NO, MEMBER_NO, 
-      CONT_NO, ORG_NO, ISU_DY, 
-      ISU_DT, BAL_PT, ISU_PT, 
-      ISU_CANCEL_PT, USE_PT, USE_CANCEL_PT, 
-      EXP_PT, USE_START_DT, USE_END_DT, 
-      EXP_DT, EXP_PROC_DT, REG_USER_ID, 
-      REG_DT, LAST_MOD_USER_ID, LAST_MOD_DT
-      )
-    values (#{ptNo,jdbcType=BIGINT}, #{memberPtNo,jdbcType=BIGINT}, #{memberNo,jdbcType=BIGINT}, 
-      #{contNo,jdbcType=BIGINT}, #{orgNo,jdbcType=BIGINT}, #{isuDy,jdbcType=VARCHAR}, 
-      #{isuDt,jdbcType=TIMESTAMP}, #{balPt,jdbcType=BIGINT}, #{isuPt,jdbcType=BIGINT}, 
-      #{isuCancelPt,jdbcType=BIGINT}, #{usePt,jdbcType=BIGINT}, #{useCancelPt,jdbcType=BIGINT}, 
-      #{expPt,jdbcType=BIGINT}, #{useStartDt,jdbcType=TIMESTAMP}, #{useEndDt,jdbcType=TIMESTAMP}, 
-      #{expDt,jdbcType=TIMESTAMP}, #{expProcDt,jdbcType=TIMESTAMP}, #{regUserId,jdbcType=VARCHAR}, 
-      #{regDt,jdbcType=TIMESTAMP}, #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP}
-      )
+  <insert id="insert" keyColumn="PT_NO" keyProperty="ptNo" parameterType="com.albee.albeepoint.mapper.base.t_pt_mst.TPtMst" useGeneratedKeys="true">
+    insert into t_pt_mst (MEMBER_PT_NO, MEMBER_NO, CONT_NO, 
+      ORG_NO, ISU_DY, ISU_DT, 
+      BAL_PT, ISU_PT, ISU_CANCEL_PT, 
+      USE_PT, USE_CANCEL_PT, EXP_PT, 
+      USE_START_DT, USE_END_DT, EXP_DT, 
+      EXP_PROC_DT, REG_USER_ID, REG_DT, 
+      LAST_MOD_USER_ID, LAST_MOD_DT)
+    values (#{memberPtNo,jdbcType=BIGINT}, #{memberNo,jdbcType=BIGINT}, #{contNo,jdbcType=BIGINT}, 
+      #{orgNo,jdbcType=BIGINT}, #{isuDy,jdbcType=VARCHAR}, #{isuDt,jdbcType=TIMESTAMP}, 
+      #{balPt,jdbcType=BIGINT}, #{isuPt,jdbcType=BIGINT}, #{isuCancelPt,jdbcType=BIGINT}, 
+      #{usePt,jdbcType=BIGINT}, #{useCancelPt,jdbcType=BIGINT}, #{expPt,jdbcType=BIGINT}, 
+      #{useStartDt,jdbcType=TIMESTAMP}, #{useEndDt,jdbcType=TIMESTAMP}, #{expDt,jdbcType=TIMESTAMP}, 
+      #{expProcDt,jdbcType=TIMESTAMP}, #{regUserId,jdbcType=VARCHAR}, #{regDt,jdbcType=TIMESTAMP}, 
+      #{lastModUserId,jdbcType=VARCHAR}, #{lastModDt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.albee.albeepoint.mapper.base.t_pt_mst.TPtMst">
+  <insert id="insertSelective" keyColumn="PT_NO" keyProperty="ptNo" parameterType="com.albee.albeepoint.mapper.base.t_pt_mst.TPtMst" useGeneratedKeys="true">
     insert into t_pt_mst
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="ptNo != null">
-        PT_NO,
-      </if>
       <if test="memberPtNo != null">
         MEMBER_PT_NO,
       </if>
@@ -203,9 +198,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="ptNo != null">
-        #{ptNo,jdbcType=BIGINT},
-      </if>
       <if test="memberPtNo != null">
         #{memberPtNo,jdbcType=BIGINT},
       </if>
